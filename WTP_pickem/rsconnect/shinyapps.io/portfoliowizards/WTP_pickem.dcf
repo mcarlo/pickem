@@ -1,0 +1,8 @@
+name: WTP_pickem
+account: portfoliowizards
+server: shinyapps.io
+bundleId: 281238
+url: https://winthatpool.shinyapps.io/WTP_pickem
+when: 1444068410.59095
+asMultiple: FALSE
+asStatic: FALSE
