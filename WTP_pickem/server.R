@@ -1,5 +1,5 @@
 #rm(list = ls())
-load("app2015wk04.RData")
+load("app2015wk07.RData")
 library(shiny); library(scales)
 require(googleVis)
 
@@ -20,4 +20,7 @@ shinyServer(function(input, output) {
                       chartid = "mytable")
     most.W
   })
+
 })
+
+

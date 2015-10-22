@@ -1,7 +1,7 @@
 rm(list = ls())
 load("straightStartSpecific.Rdata")
 
-weekFile <- read.csv("~/WEEK04_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
+weekFile <- read.csv("~/WEEK07test_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
 weekFile <- weekFile[order(weekFile$YahooOrder), ]
 winprob <- weekFile$WinProbability
 
@@ -101,7 +101,7 @@ compTactics <- function(inputList, reps){
   outputList
 }
 
-save(weekFile, firstList, compTactics, popList, calcTactics, fanSubset, comparisonPicks, comparisonPicksScores, file = "2015wk04.RData")
+#save(weekFile, firstList, compTactics, popList, calcTactics, fanSubset, comparisonPicks, comparisonPicksScores, file = "2015wk07.RData")
 ###
 # rm(list = ls())
 # setwd("D:/Documents/GitHub/straightsims")
@@ -114,9 +114,4 @@ playersBest <- rep(firstList, maxReps)
 
 system.time(playersBest <- compTactics(firstList, maxReps))
 
-# setwd("WTP_pickem")
-
-save(weekFile, playersBest, file = "WTP_pickem/app2015wk04.RData")
-# playersBest2 <- playersBest
-# load("WTP_pickem/app2015wk04.RData")
-# playersBest[[40]]$mostTeams == playersBest2[[40]]$mostTeams
+save(weekFile, playersBest, file = "WTP_pickem/app2015wk07.RData")
