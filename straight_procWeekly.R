@@ -1,7 +1,7 @@
 rm(list = ls())
 load("straightStartSpecific.Rdata")
 
-weekFile <- read.csv("~/WEEK07test_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
+weekFile <- read.csv("~/WEEK07_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
 weekFile <- weekFile[order(weekFile$YahooOrder), ]
 winprob <- weekFile$WinProbability
 
