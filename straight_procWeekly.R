@@ -1,7 +1,7 @@
 rm(list = ls())
 load("straightStartSpecific.Rdata")
 
-weekFile <- read.csv("~/WEEK07_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
+weekFile <- read.csv("~/WEEK08_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
 weekFile <- weekFile[order(weekFile$YahooOrder), ]
 winprob <- weekFile$WinProbability
 
@@ -114,4 +114,4 @@ playersBest <- rep(firstList, maxReps)
 
 system.time(playersBest <- compTactics(firstList, maxReps))
 
-save(weekFile, playersBest, file = "WTP_pickem/app2015wk07.RData")
+save(weekFile, playersBest, file = "WTP_pickem/app2015wk08.RData")
