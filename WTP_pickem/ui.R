@@ -12,7 +12,7 @@ shinyUI(fluidPage(
            sliderInput("players", "   Number of Players in Pool:", min = 5,
                        max = 100, step = 5, value = 35),
             h4("Winningest Picks, Week 8"),
-           p("Updated 10/27/16 12:30p PDT"),
+           p("Updated 10/27/15 3:50p PDT"),
            htmlOutput(outputId="mostWins")
           ,
                         tags$head(tags$style(type="text/css",
