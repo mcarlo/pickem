@@ -1,5 +1,7 @@
 #rm(list = ls())
-load("app2015wk08.RData")
+weekNum=1
+fileName <- paste0("app2016wk", weekNum, ".RData")
+load(fileName)
 library(shiny); library(scales)
 require(googleVis)
 

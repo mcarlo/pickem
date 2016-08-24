@@ -7,12 +7,12 @@ shinyUI(fluidPage(
   fluidRow(
     column(3, p("")),
     column(9,
-           h3("Subscriber picks for 2015"), #style = "color: #06018f;"),
+           h3("Subscriber picks for 2016"), #style = "color: #06018f;"),
            h6("Appropriate for straight-up pick'em pools with a weekly payout"),
            sliderInput("players", "   Number of Players in Pool:", min = 5,
                        max = 100, step = 5, value = 35),
-            h4("Winningest Picks, Week 8"),
-           p("Final Update 10/29/15 8:20a PDT"),
+            h4(paste0("Winningest Picks, Week 17")),
+           p(paste0("simulations updated ", as.character.Date(Sys.time()), as.character.Date(Sys.timezone()))),
            htmlOutput(outputId="mostWins")
           ,
                         tags$head(tags$style(type="text/css",

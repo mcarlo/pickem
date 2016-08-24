@@ -1,7 +1,10 @@
 rm(list = ls())
 load("straightStartSpecific.Rdata")
 
-weekFile <- read.csv("~/WEEK08_2015.csv", stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
+weekNum <- 1
+
+infile <- paste0("D:/WTP/WEEK0", weekNum, "_2016.csv")
+weekFile <- read.csv(infile, stringsAsFactors = F) #read.csv("D:/WTP/WEEK01_2015.csv", stringsAsFactors = F)
 weekFile <- weekFile[order(weekFile$YahooOrder), ]
 winprob <- weekFile$WinProbability
 
@@ -34,12 +37,12 @@ fanScores <- crossprod(outcomeMatrix, fanMatrix) + crossprod((1- outcomeMatrix),
 fanSubset <- matrix(rep(0, 1700 * 250), nrow = 1700)
 sampleFans <- matrix(sample(1:1700, 1700 * 250, replace = T), nrow = 1700)
 
-for (i in 1:1700){
+for (i in 1:1700){#i = 1
   fanSubset[i, ] <- fanScores[i, sampleFans[i, ]]
 }
-rm(fanScores)
-calcTactics <- function(size){#size=40
-  fanScoreSubset <- fanSubset[, 1:size]
+#rm(fanScores)
+calcTactics <- function(size){#size=95
+  fanScoreSubset <- fanSubset[, 1:size] #fanScoreSubset[1:10, 1:10]
 
   comparisonFirst <- comparisonPicksScores > apply(fanScoreSubset, 1, max)
   comparisonTiedorFirst <- comparisonPicksScores >= apply(fanScoreSubset, 1, max)
@@ -85,7 +88,7 @@ calcTactics <- function(size){#size=40
 }
 
 popList <- function(size){list(size, calcTactics(size))}
-system.time(firstList <- popList(25))
+system.time(firstList <- popList(95))
 
 compTactics <- function(inputList, reps){
   fanSizes <- seq(5, 5 * reps, by = 5)
@@ -101,17 +104,12 @@ compTactics <- function(inputList, reps){
   outputList
 }
 
-#save(weekFile, firstList, compTactics, popList, calcTactics, fanSubset, comparisonPicks, comparisonPicksScores, file = "2015wk07.RData")
 ###
-# rm(list = ls())
-# setwd("D:/Documents/GitHub/straightsims")
-#
-# load("2015wk03.RData")
-
-# system.time(compTactics(firstList, 5))
 maxReps <- 20
 playersBest <- rep(firstList, maxReps)
 
 system.time(playersBest <- compTactics(firstList, maxReps))
 
-save(weekFile, playersBest, file = "WTP_pickem/app2015wk08.RData")
+thisDate <- as.character(format(Sys.time(), "%D %I:%M %Z"))
+fileName <- paste0("WTP_pickem/app2016wk", weekNum, ".RData")
+save(weekFile, playersBest, thisDate, weekNum, file = fileName)
